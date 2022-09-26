@@ -74,7 +74,10 @@ class DetailActivity : YouTubeBaseActivity() {
 
     }
 
+
     private fun initializeYoutube(youtubeKey: String) {
+
+        val movie = intent.getParcelableExtra<Movie>(MOVIE_EXTRA) as Movie
 
         ytPlayerView.initialize(YOUTUBE_API_KEY, object: YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
@@ -83,8 +86,15 @@ class DetailActivity : YouTubeBaseActivity() {
                 p2: Boolean
             ) {
                 Log.i(TAG,"Oninitilizationsuccess")
-                player?.cueVideo(youtubeKey);
-            }
+
+                if (ratingBar.rating > 5.0) {
+
+                    player?.loadVideo(youtubeKey)
+
+                }
+                else{ player?.cueVideo(youtubeKey)
+                }
+                }
 
             override fun onInitializationFailure(
                 p0: YouTubePlayer.Provider?,

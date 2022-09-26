@@ -58,8 +58,6 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
 
         override fun onClick(v: View?) {
 
-
-
             val movie = movies[adapterPosition]
             val intent = Intent(context, DetailActivity::class.java)
 
