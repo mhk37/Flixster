@@ -3,13 +3,16 @@ package com.example.flixster
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
 import org.json.JSONException
 import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.module.AppGlideModule;
 
 
@@ -17,7 +20,6 @@ private const val TAG = "MainActivity"
 private const val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
 class MainActivity : AppCompatActivity() {
-
 
     private val movies = mutableListOf<Movie>()
     private lateinit var rvMovies: RecyclerView
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         rvMovies = findViewById(R.id.rvMovies)
+
 
         val movieAdapter = MovieAdapter(this, movies)
         rvMovies.adapter = movieAdapter
